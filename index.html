@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sara 💖</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #ffe6f2;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.page { display: none; padding: 20px; }
+
+input {
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 20px;
+}
+
+button {
+    padding: 12px 22px;
+    background: hotpink;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    margin: 15px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.gif {
+    width: 260px;
+    border-radius: 20px;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.heart {
+    position: fixed;
+    bottom: -10px;
+    color: red;
+    font-size: 22px;
+    animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-700px) scale(1.8); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<script>
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}, 400);
+
+function show(pageId) {
+    document.querySelectorAll(".page").forEach(p => p.style.display = "none");
+    document.getElementById(pageId).style.display = "block";
+}
+
+function openSite() {
+    let name = document.getElementById("name").value.toLowerCase().trim();
+    if (name === "sara") show("surprise");
+    else alert("This surprise is only for Sara 💖");
+}
+
+let found = 0;
+function findHeart(id) {
+    document.getElementById(id).style.opacity = "0.2";
+    found++;
+    if (found === 3) show("threeOptions");
+}
+</script>
+
+<div class="page" id="namePage" style="display:block;">
+    <h2>Enter Your Name 💕</h2>
+    <input id="name" placeholder="Your Name">
+    <button onclick="openSite()">Open</button>
+</div>
+
+<div class="page" id="surprise">
+    <h2>A Small Surprise For You 💝</h2>
+    <img src="tkthao219-bubududu.gif" class="gif">
+    <button onclick="show('friendAsk')">Open</button>
+</div>
+
+<div class="page" id="friendAsk">
+    <h2>Will you be my friend? 🥺💖</h2>
+    <img src="tkthao219-bubududu1.gif" class="gif">
+    <button onclick="show('friendYes')">Yes</button>
+    <button onclick="show('friendNo')">No</button>
+</div>
+
+<div class="page" id="friendNo">
+    <h2>Please think again 🥺💗</h2>
+    <img src="tkthao219-bubududu2.gif" class="gif">
+    <p>🐼 This panda is requesting you nicely...</p>
+    <button onclick="show('friendAsk')">Okay ask again</button>
+</div>
+
+<div class="page" id="friendYes">
+    <h2>For You ❤️</h2>
+    <img src="flowers.gif" class="gif">
+    <p>🐼 This panda is giving a flower only to you, Sara 💐💖</p>
+    <button onclick="show('heartGame')">Continue</button>
+</div>
+
+<div class="page" id="heartGame">
+    <h2>Find 3 Hidden Hearts ❤️❤️❤️</h2>
+    <img src="bubu-dudu.webp" class="gif">
+    <p>🐼 Panda is requesting you to find them!</p>
+
+    <p onclick="findHeart('h1')" id="h1">❤️</p>
+    <p onclick="findHeart('h2')" id="h2" style="margin-top:80px;">❤️</p>
+    <p onclick="findHeart('h3')" id="h3" style="margin-top:120px;">❤️</p>
+</div>
+
+<div class="page" id="threeOptions">
+    <h2>Open These 💝</h2>
+    <button onclick="show('eyesMsg')">About Your Eyes 👀</button>
+    <button onclick="show('smileMsg')">About Your Smile 😊</button>
+    <button onclick="show('cuteMsg')">About Your Cuteness 🥰</button>
+</div>
+
+<div class="page" id="eyesMsg">
+    <h2>Your Eyes 👀💖</h2>
+    <p>Your eyes are magical 💖</p>
+    <button onclick="show('threeOptions')">Back</button>
+</div>
+
+<div class="page" id="smileMsg">
+    <h2>Your Smile 😊💗</h2>
+    <p>Your smile lights everything ✨</p>
+    <button onclick="show('threeOptions')">Back</button>
+</div>
+
+<div class="page" id="cuteMsg">
+    <h2>Your Cuteness 🥺💝</h2>
+    <p>You are super cute 💕</p>
+    <button onclick="show('threeOptions')">Back</button>
+    <button onclick="show('smilePage')">Next</button>
+</div>
+
+<div class="page" id="smilePage">
+    <h2>Please Smile 😊📸</h2>
+    <img src="angel.webp" class="gif">
+    <button onclick="show('cameraPage')">Next</button>
+</div>
+
+<div class="page" id="cameraPage">
+    <h2>Open Your Front Camera 🎥</h2>
+    <button onclick="show('finalMsg')">Continue</button>
+</div>
+
+<div class="page" id="finalMsg">
+    <h2>Thank You Sara 💖</h2>
+    <img src="tkthao219-bubududu1.gif" class="gif">
+    <p>You are special 💕</p>
+</div>
+
+</body>
+</html>
